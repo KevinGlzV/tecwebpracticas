@@ -38,6 +38,7 @@
             echo $_POST["email"];
         }
     ?>
+
 <h2>Ejercicio 2</h2>
     <p>Crea un programa para la generación repetitiva de 3 números aleatorios hasta obtener una secuencia compuesta por: impar, par, impar</p>
     <?php
@@ -95,8 +96,54 @@ echo "</table>";
 echo "<p>$numerosGenerados números obtenidos en $iteraciones iteraciones</p>";
 ?>
 
+<h2>Ejercicio 3</h2>
+    <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente, pero que además sea múltiplo de un número dado: Crear una variante de este script utilizando el ciclo do-while y El número dado se debe obtener vía GET.</p>
+    <?php
+    // Obtener el número múltiplo a través de GET
+$multiplo = isset($_GET['multiplo']) ? intval($_GET['multiplo']) : 0;
+
+if ($multiplo <= 0) {
+    echo "<p>Ingresa un número válido como múltiplo a través de GET.</p>";
+} else {
+    $encontrado = false;
+    $numero = 0;
+
+    while (!$encontrado) {
+        $numero = rand(1, 100); // Generar número aleatorio
+        
+        if ($numero % $multiplo == 0) {
+            $encontrado = true;
+        }
+    }
+
+    echo "<p>El primer número entero múltiplo de $multiplo obtenido aleatoriamente es: $numero</p>";
+}
 
 
+    ?>
+    <h2>Ejercicio 3 Con Ciclo Do-While</h2>
+
+<?php
+// Obtener el número múltiplo a través de GET
+$multiplo = isset($_GET['multiplo']) ? intval($_GET['multiplo']) : 0;
+
+if ($multiplo <= 0) {
+    echo "<p>Ingresa un número válido como múltiplo a través de GET.</p>";
+} else {
+    $encontrado = false;
+    $numero = 0;
+
+    do {
+        $numero = rand(1, 100); // Generar número aleatorio
+        
+        if ($numero % $multiplo == 0) {
+            $encontrado = true;
+        }
+    } while (!$encontrado);
+
+    echo "<p>El primer número entero múltiplo de $multiplo obtenido aleatoriamente es: $numero</p>";
+}
+?>
 
 </body>
 </html>
