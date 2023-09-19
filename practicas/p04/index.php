@@ -38,16 +38,64 @@
             echo $_POST["email"];
         }
     ?>
-
 <h2>Ejercicio 2</h2>
     <p>Crea un programa para la generación repetitiva de 3 números aleatorios hasta obtener una secuencia compuesta por: impar, par, impar</p>
     <?php
+// Función para generar un número aleatorio impar
+function generarImpar() {
+    return rand(1, 100) * 2 - 1;
+}
 
-    ?>
+// Función para generar un número aleatorio par
+function generarPar() {
+    return rand(1, 100) * 2;
+}
 
-    <h2>Ejemplo de POST</h2>
+// Inicialización de la matriz
+$matriz = array();
+$iteraciones = 0;
+$numerosGenerados = 0;
 
-    ?>
+while (true) {
+    $iteraciones++;
+    $fila = array();
+    
+    for ($i = 0; $i < 3; $i++) {
+        if ($i % 2 == 0) {
+            // Generar número impar
+            $numero = generarImpar();
+        } else {
+            // Generar número par
+            $numero = generarPar();
+        }
+        $fila[] = $numero;
+        $numerosGenerados++;
+    }
+    
+    // Verificar si la fila cumple con la condición
+    if ($fila[0] % 2 == 1 && $fila[1] % 2 == 0 && $fila[2] % 2 == 1) {
+        $matriz[] = $fila;
+        break;
+    }
+}
+
+// Mostrar la matriz resultante
+echo "<h2>Matriz Resultante</h2>";
+echo "<table border='1'>";
+foreach ($matriz as $fila) {
+    echo "<tr>";
+    foreach ($fila as $numero) {
+        echo "<td>$numero</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+
+// Mostrar el número de iteraciones y la cantidad de números generados
+echo "<p>$numerosGenerados números obtenidos en $iteraciones iteraciones</p>";
+?>
+
+
 
 
 </body>
