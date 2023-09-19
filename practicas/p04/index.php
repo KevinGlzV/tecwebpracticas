@@ -99,51 +99,93 @@ echo "<p>$numerosGenerados números obtenidos en $iteraciones iteraciones</p>";
 <h2>Ejercicio 3</h2>
     <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente, pero que además sea múltiplo de un número dado: Crear una variante de este script utilizando el ciclo do-while y El número dado se debe obtener vía GET.</p>
     <?php
-    // Obtener el número múltiplo a través de GET
-$multiplo = isset($_GET['multiplo']) ? intval($_GET['multiplo']) : 0;
-
-if ($multiplo <= 0) {
-    echo "<p>Ingresa un número válido como múltiplo a través de GET.</p>";
-} else {
-    $encontrado = false;
-    $numero = 0;
-
-    while (!$encontrado) {
-        $numero = rand(1, 100); // Generar número aleatorio
+    // Verificar si se ha proporcionado un número a través de GET
+if (isset($_GET['numero'])) {
+    // Obtener el número dado a través de GET
+    $numeroDado = intval($_GET['numero']);
+    
+    // Inicializar un contador
+    $contador = 1;
+    
+    // Generar números aleatorios hasta encontrar el primero que sea múltiplo del número dado
+    while (true) {
+        $numeroAleatorio = rand(1, 100); // Generar un número aleatorio entre 1 y 100
         
-        if ($numero % $multiplo == 0) {
-            $encontrado = true;
+        if ($numeroAleatorio % $numeroDado == 0) {
+            // Mostrar el número encontrado
+            echo "<p>El primer número entero aleatorio múltiplo de $numeroDado es: $numeroAleatorio</p>";
+            break;
         }
+        
+        $contador++;
     }
-
-    echo "<p>El primer número entero múltiplo de $multiplo obtenido aleatoriamente es: $numero</p>";
+    
+    // Mostrar el número de iteraciones realizadas
+    echo "<p>Se realizaron $contador iteraciones para encontrar el número.</p>";
+} else {
+    // Si no se proporciona un número a través de GET, mostrar un mensaje de error
+    echo "<p>No se proporcionó un número a través de GET.</p>";
 }
-
-
     ?>
     <h2>Ejercicio 3 Con Ciclo Do-While</h2>
 
 <?php
-// Obtener el número múltiplo a través de GET
-$multiplo = isset($_GET['multiplo']) ? intval($_GET['multiplo']) : 0;
-
-if ($multiplo <= 0) {
-    echo "<p>Ingresa un número válido como múltiplo a través de GET.</p>";
-} else {
-    $encontrado = false;
-    $numero = 0;
-
+// Verificar si se ha proporcionado un número a través de GET
+if (isset($_GET['numero'])) {
+    // Obtener el número dado a través de GET
+    $numeroDado = intval($_GET['numero']);
+    
+    // Inicializar un contador
+    $contador = 0;
+    
     do {
-        $numero = rand(1, 100); // Generar número aleatorio
-        
-        if ($numero % $multiplo == 0) {
-            $encontrado = true;
-        }
-    } while (!$encontrado);
-
-    echo "<p>El primer número entero múltiplo de $multiplo obtenido aleatoriamente es: $numero</p>";
+        $contador++;
+        $numeroAleatorio = rand(1, 100); // Generar un número aleatorio entre 1 y 100
+    } while ($numeroAleatorio % $numeroDado != 0);
+    
+    // Mostrar el número encontrado
+    echo "<p>El primer número entero aleatorio múltiplo de $numeroDado es: $numeroAleatorio</p>";
+    
+    // Mostrar el número de iteraciones realizadas
+    echo "<p>Se realizaron $contador iteraciones para encontrar el número.</p>";
+} else {
+    // Si no se proporciona un número a través de GET, mostrar un mensaje de error
+    echo "<p>No se proporcionó un número a través de GET.</p>";
 }
 ?>
+
+<h2>Ejercicio 4</h2>
+    <p>Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la ‘a’ a la ‘z’. Usa la función chr(n) que devuelve el caracter cuyo código ASCII es n para poner el valor en cada índice. Es decir:
+        [97] => a
+        [98] => b
+        [99] => c
+        ...
+        [122] => z
+     Crea el arreglo con un ciclo for
+     Lee el arreglo y crea una tabla en XHTML con echo y un ciclo foreach
+    foreach ($arreglo as $key => $value) {
+    # code...
+    } </p>
+
+    <?php
+// Crear el arreglo utilizando un ciclo for
+$arreglo = array();
+for ($i = 97; $i <= 122; $i++) {
+    $arreglo[$i] = chr($i);
+}
+
+// Crear una tabla XHTML para mostrar el arreglo
+echo "<table border='1'>";
+foreach ($arreglo as $indice => $letra) {
+    echo "<tr>";
+    echo "<td>[$indice]</td>";
+    echo "<td>$letra</td>";
+    echo "</tr>";
+}
+echo "</table>";
+?>
+
+    
 
 </body>
 </html>
