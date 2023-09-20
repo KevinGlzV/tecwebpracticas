@@ -213,7 +213,297 @@ echo "</table>";
     }
     ?> 
 
+<h2>Ejercicio 6</h2>
+    <p>Crea en código duro un arreglo asociativo que sirva para registrar el parque vehicular de una ciudad. Cada vehículo debe ser identificado por:
+    <p>
+    <ul>
+    <li>Matrícula</li>
+    <li>
+        Auto
+        <ul>
+            <li>Marca </li>
+            <li>Modelo (Año)</li>
+            <li>Tipo: (sedán|hatchback|camioneta)</li>
+        </ul>
+    </li>
+    <li>
+        Propietario
+        <ul>
+            <li>Nombre</li>
+            <li>Ciudad</li>
+            <li>Dirección</li>
+        </ul>
+    </li>
+</ul>
+    La matrícula debe tener el siguiente formato LLLNNNN, donde las L pueden ser letras de la A-Z y las N pueden ser números de 0-9.
+    <p>Para hacer esto toma en cuenta las siguientes instrucciones:
+        <ul>
+            <li>Crea en código duro el registro para 15 autos</li>
+            <li>Utiliza un único arreglo, cuya clave de cada registro sea la matricula</li>
+            <li>Lógicamente la matricula no se puede repetir.</li>
+            <li>Los datos del Auto deben ir dentro de un arreglo.</li>
+            <li>Los datos del Propietario deben ir dentro de un arreglo.</li>
+        </ul>
+    </li>
+</ul>
+Usa print_r para mostrar la estructura general del arreglo, que luciría de forma similar al siguiente ejemplo:
 
+Array ( [UBN6338] => Array ( [Auto] => Array ( [marca] => HONDA [modelo] => 2020 [tipo] => camioneta ) [Propietario] => Array ( [nombre] => Alfonzo Esparza [ciudad] => Puebla, Pue. [direccion] => C.U., Jardines de San Manuel ) ) [UBN6339] => Array ( [Auto] => Array ( [marca] => MAZDA [modelo] => 2019 [tipo] => sedan ) [Propietario] => Array ( [nombre] => Ma. del Consuelo Molina [ciudad] => Puebla, Pue. [direccion] => 97 oriente ) ) )</p>
+    </p>
+    </p>
+    <P>Escrito de forma más ordenada:</P>
+    <p>Finalmente crea un formulario simple donde puedas consultar la información:
+        <ul>
+            <li>Por matricula de auto</li>
+            <li>De todos los autos registrados</li>
+        </ul></p>
+
+        <!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 6</title>
+</head>
+<body>
+    <h2>Parque Vehicular de Puebla</h2>
+
+    <?php
+    // Definir el arreglo asociativo del parque vehicular
+    $parqueVehicular = array(
+        'UBN6338' => array(
+            'Auto' => array(
+                'Marca' => 'HONDA',
+                'Modelo' => '2020',
+                'Tipo' => 'camioneta'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Alfonzo Esparza',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => 'C.U., Jardines de San Manuel'
+            )
+        ),
+        'UBN6339' => array(
+            'Auto' => array(
+                'Marca' => 'MAZDA',
+                'Modelo' => '2019',
+                'Tipo' => 'sedan'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Ma. del Consuelo Molina',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '97 oriente'
+            )
+        ),
+        'XYZ123' => array(
+            'Auto' => array(
+                'Marca' => 'TOYOTA',
+                'Modelo' => '2022',
+                'Tipo' => 'hatchback'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Juan Pérez',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '123 Avenida Principal'
+            )
+        ),
+        'ABC456' => array(
+            'Auto' => array(
+                'Marca' => 'FORD',
+                'Modelo' => '2018',
+                'Tipo' => 'sedan'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Laura González',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '456 Calle Secundaria'
+            )
+        ),
+        'DEF789' => array(
+            'Auto' => array(
+                'Marca' => 'CHEVROLET',
+                'Modelo' => '2021',
+                'Tipo' => 'camioneta'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Carlos Sánchez',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '789 Boulevard Principal'
+            )
+        ),
+        'GHI101' => array(
+            'Auto' => array(
+                'Marca' => 'NISSAN',
+                'Modelo' => '2020',
+                'Tipo' => 'hatchback'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Ana Martínez',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '101 Avenida Central'
+            )
+        ),
+        'JKL121' => array(
+            'Auto' => array(
+                'Marca' => 'VOLKSWAGEN',
+                'Modelo' => '2019',
+                'Tipo' => 'sedan'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Roberto López',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '121 Calle Secundaria'
+            )
+        ),
+        'MNO141' => array(
+            'Auto' => array(
+                'Marca' => 'HONDA',
+                'Modelo' => '2020',
+                'Tipo' => 'camioneta'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Isabel Pérez',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '141 Avenida Principal'
+            )
+        ),
+        'PQR161' => array(
+            'Auto' => array(
+                'Marca' => 'TOYOTA',
+                'Modelo' => '2022',
+                'Tipo' => 'hatchback'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Manuel Rodríguez',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '161 Boulevard Principal'
+            )
+        ),
+        'STU181' => array(
+            'Auto' => array(
+                'Marca' => 'CHEVROLET',
+                'Modelo' => '2018',
+                'Tipo' => 'sedan'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Patricia García',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '181 Calle Secundaria'
+            )
+        ),
+        'VWX202' => array(
+            'Auto' => array(
+                'Marca' => 'FORD',
+                'Modelo' => '2021',
+                'Tipo' => 'camioneta'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Luis Torres',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '202 Avenida Principal'
+            )
+        ),
+        'YZA222' => array(
+            'Auto' => array(
+                'Marca' => 'NISSAN',
+                'Modelo' => '2020',
+                'Tipo' => 'hatchback'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'María Ramírez',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '222 Avenida Central'
+            )
+        ),
+        'BCD242' => array(
+            'Auto' => array(
+                'Marca' => 'VOLKSWAGEN',
+                'Modelo' => '2019',
+                'Tipo' => 'sedan'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Jorge Sánchez',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '242 Calle Secundaria'
+            )
+        ),
+        'EFG262' => array(
+            'Auto' => array(
+                'Marca' => 'HONDA',
+                'Modelo' => '2020',
+                'Tipo' => 'camioneta'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Ana Pérez',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '262 Avenida Principal'
+            )
+        ),
+        'HIJ282' => array(
+            'Auto' => array(
+                'Marca' => 'TOYOTA',
+                'Modelo' => '2022',
+                'Tipo' => 'hatchback'
+            ),
+            'Propietario' => array(
+                'Nombre' => 'Carlos González',
+                'Ciudad' => 'Puebla, Pue.',
+                'Direccion' => '282 Boulevard Principal'
+            )
+        )
+    );
+    
+    // Mostrar la estructura general del arreglo utilizando print_r    
+    // Mostrar la estructura del arreglo en una sola línea con margen
+echo "<h3>Estructura del arreglo en una sola línea con margen:</h3>";
+$estructuraEnTexto = json_encode($parqueVehicular);
+$estructuraEnTexto = str_replace(['{', '}', '":"', '","', '":["'], ['{ ', ' }', '": "', '", "', '": ['], $estructuraEnTexto);
+echo '<pre>' . $estructuraEnTexto . '</pre>';
+
+
+
+
+
+
+    // Mostrar la estructura ordenada  del arreglo utilizando print_r
+    echo "<h3>Estructura del arreglo ordenada:</h3>";
+    echo "<pre>";
+    print_r($parqueVehicular);
+    echo "</pre>";
+
+    // Procesar la solicitud del formulario
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["matricula"])) {
+            $matricula = $_POST["matricula"];
+            if (array_key_exists($matricula, $parqueVehicular)) {
+                // Mostrar información del vehículo con la matrícula especificada
+                $vehiculo = $parqueVehicular[$matricula];
+                echo "<h3>Información del Vehículo ($matricula):</h3>";
+                echo "<pre>";
+                print_r($vehiculo);
+                echo "</pre>";
+            } else {
+                echo "<p>La matrícula '$matricula' no se encontró en la base de datos.</p>";
+            }
+        } elseif (isset($_POST["todos"])) {
+            // Mostrar información de todos los vehículos
+            echo "<h3>Información de Todos los Vehículos:</h3>";
+            echo "<pre>";
+            print_r($parqueVehicular);
+            echo "</pre>";
+        }
+    }
+    ?>
+
+
+    <h3>Consultar Información</h3>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="matricula">Buscar por Matrícula:</label>
+        <input type="text" name="matricula" id="matricula">
+        <input type="submit" value="Buscar">
+    </form>
+
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="submit" name="todos" value="Mostrar Todos los Vehículos">
+    </form>
 
 
 </body>
